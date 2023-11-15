@@ -37,4 +37,15 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: jonathastassi/event-control-api:latest      
+          tags: jonathastassi/event-control-api:latest     
+
+      - name: Install Render CLI
+        run: |
+          curl -sSL https://render.com/install.sh | bash
+
+      - name: Deploy to Render.com
+        run: |
+          render login --token ${{ secrets.RENDER_TOKEN }}
+          render service update seu-servico --jonathastassi/event-control-api:latest
+
+    
