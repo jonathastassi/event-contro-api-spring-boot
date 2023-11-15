@@ -1,0 +1,28 @@
+name: Build and Push to Docker Hub
+
+on:
+  push:
+    branches:
+      - main  # ajuste conforme a branch desejada
+  pull_request:
+    branches:
+      - main  # ajuste conforme a branch desejada
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build with Gradle
+        run: ./gradlew build -x test  # altere conforme necessário, por exemplo, se houver necessidade de rodar testes
+
+     
