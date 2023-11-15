@@ -39,13 +39,10 @@ jobs:
           push: true
           tags: jonathastassi/event-control-api:latest     
 
-      - name: Install Render CLI
+      - name: Deploy
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
-          curl -sSL https://render.com/install.sh | bash
-
-      - name: Deploy to Render.com
-        run: |
-          render login --token ${{ secrets.RENDER_TOKEN }}
-          render service update seu-servico --jonathastassi/event-control-api:latest
+          curl "$deploy_url"
 
     
