@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class EventCategoryController {
     @GetMapping
     public ResponseEntity<String> getAllCategory() {
-        return ResponseEntity.ok("Get All Category");
+        return ResponseEntity.ok("Get All Category - teste");
     }
 }
