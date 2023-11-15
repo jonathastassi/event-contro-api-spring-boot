@@ -37,4 +37,12 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: jonathastassi/event-control-api:latest      
+          tags: jonathastassi/event-control-api:latest     
+
+      - name: Deploy
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"
+
+    
